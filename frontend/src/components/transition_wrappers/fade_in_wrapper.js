@@ -16,7 +16,6 @@ class FadeInWrapper extends React.Component{
 
   render(){
     const { comp } = this.props;
-    debugger;
     return(
       <CSSTransition in={this.state.ready} timeout={3000} classNames="fade-in" appear={true}>
         {comp}
