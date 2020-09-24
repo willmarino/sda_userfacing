@@ -4,9 +4,9 @@ import HeaderButton from '../buttons/header_button/header_button';
 
 const HeaderNav = () => {
   return(
-    <ul>
-      <HeaderButton destinationPath={"/"} label={"home"}/>
-      <HeaderButton destinationPath={"/about"} label={"about"}/>
+    <ul className='header-nav'>
+      <HeaderButton destinationPath={"#/"} label={"home"}/>
+      <HeaderButton destinationPath={"#/about"} label={"about"}/>
     </ul>
   )
 }

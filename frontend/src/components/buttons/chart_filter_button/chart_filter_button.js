@@ -14,10 +14,10 @@ class FilterButton extends React.Component{
     return(
       <div>
         <p>{label}</p>
-        <div>
+        <div onClick={() => { this.setState({dropdownOpen: !this.state.dropdownOpen}) }}>
           <p>{curOption}</p>
-          {dropdown}
         </div>
+          {dropdown}
       </div>
     )
   }

@@ -1,0 +1,51 @@
+.header{
+  width: 100%;
+  height: 23%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  box-sizing: border-box;
+  padding-bottom: 4%;
+
+
+}
+
+.header-nav{
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  
+  margin-top: 4vh;
+}
+
+.header-button{
+  height: 25px;
+  width: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-button-underline{
+    width: 0px;
+    height: 1px;
+    border-bottom: 1px solid black;
+    transition: all .7s;
+  }
+
+}
+
+.header-button:hover{
+  cursor: pointer;
+  border-bottom-color: black;
+  .header-button-underline{
+    width: 100%;
+  }
+}
+
+.header-button-label{
+  text-align: center;
+}

@@ -3,8 +3,8 @@ import React from 'react';
 import HeaderNav from './header_nav';
 
 const Header = () => (
-  <div>
-    <p>Hey, welcome to a live feed of a data analysis I am running on stock market data!</p>
+  <div className='header'>
+    <p>Hey, welcome to the party</p>
     <HeaderNav/>
   </div>
 )

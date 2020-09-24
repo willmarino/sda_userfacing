@@ -7,7 +7,7 @@ class ChartDisplay extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="chart-display">
         <p>chart :)</p>
       </div>
     )

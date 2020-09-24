@@ -1,0 +1,24 @@
+html{
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Peddana', serif;
+  font-size: 20px;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+}
+
+#root{
+  width: 100%;
+  height: 100%;
+}
+
+.app{
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+  padding: 0 2vw 2vw 2vw;
+}
