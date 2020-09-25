@@ -6,13 +6,15 @@
   align-items: center;
 
   box-sizing: border-box;
-  padding: 0px 20%;
 
 }
 
 .chart-display-buttons{
   width: 100%;
   display: flex;
+  margin: 0 20%;
+  padding: 0px 15%;
+  box-sizing: border-box;
 
   .chart-display-button{
     height: 25px;
@@ -24,5 +26,9 @@
 
   .chart-display-button:hover{
     cursor: pointer;
+  }
+
+  #first-display-button{
+    margin-left: 55px;
   }
 }

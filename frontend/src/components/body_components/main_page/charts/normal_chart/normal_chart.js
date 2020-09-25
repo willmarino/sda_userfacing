@@ -18,7 +18,7 @@ class NormalChart extends React.Component{
   }
 
   render(){
-    const { predictions } = this.props;
+    const { predictions, chartHeight, chartWidth } = this.props;
     if(!predictions || Object.keys(predictions).length === 0){
       return null;
     }
@@ -29,9 +29,10 @@ class NormalChart extends React.Component{
         target: elem.target
       }
     })
+    debugger;
     return(
       <div className="chart-display">
-        <LineChart width={ 800 } height={500} data={data}>
+        <LineChart width={ chartWidth } height={chartHeight} data={data}>
           <Line type="monotone" dataKey="prediction" stroke="#8884d8" />
           <Line type="monotone" dataKey="target" stroke="#8884d8" />
           <CartesianGrid stroke="#ccc" />

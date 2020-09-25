@@ -13,7 +13,7 @@ class DiffChart extends React.Component{
   }
 
   render(){
-    const { predictions } = this.props;
+    const { predictions, chartHeight, chartWidth } = this.props;
     if(!predictions || Object.keys(predictions).length === 0){
       return null;
     }
@@ -24,7 +24,7 @@ class DiffChart extends React.Component{
     })
     return(
       <div className="chart-display">
-        <LineChart width={ 800 } height={500} data={data}>
+        <LineChart width={ chartWidth } height={chartHeight} data={data}>
           <Line type="monotone" dataKey="diff" stroke="#8884d8" />
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="name" />
