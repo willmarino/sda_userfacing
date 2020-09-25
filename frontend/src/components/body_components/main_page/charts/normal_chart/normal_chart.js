@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 
 // recharts notes
 // name is label per point which is shown on x-axis, maybe timestamp for me
@@ -24,7 +24,6 @@ class NormalChart extends React.Component{
     }
     const data = predictions.map((elem) => {
       return {
-        // name: 'x',
         prediction: elem.prediction,
         target: elem.target
       }
@@ -33,10 +32,11 @@ class NormalChart extends React.Component{
     return(
       <div className="chart-display">
         <LineChart width={ chartWidth } height={chartHeight} data={data}>
-          <Line type="monotone" dataKey="prediction" stroke="#8884d8" />
-          <Line type="monotone" dataKey="target" stroke="#8884d8" />
+          <Legend verticalAlign="top" height={36}/>
+          <Line type="monotone" dataKey="prediction" stroke="#1340bd" />
+          <Line type="monotone" dataKey="target" stroke="#b31717" />
           <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="name"/>
           <YAxis />
         </LineChart>
       </div>

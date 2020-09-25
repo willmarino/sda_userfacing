@@ -1,7 +1,6 @@
 import {
   RECEIVE_PREDICTIONS,
   RECEIVE_PREDICTION,
-  REMOVE_PREDICTION
 } from '../actions/predictions'
 
 const PredictionsReducer = (state={}, action) => {
@@ -9,6 +8,10 @@ const PredictionsReducer = (state={}, action) => {
   switch(action.type){
     case RECEIVE_PREDICTIONS:
       return action.predictions.data;
+    case RECEIVE_PREDICTION:
+      let newState = state.concat(action.prediction);
+      newState.shift();
+      return newState;
     default:
       return state;
   }

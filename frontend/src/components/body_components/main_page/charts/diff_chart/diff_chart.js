@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 
 
 class DiffChart extends React.Component{
@@ -25,6 +25,7 @@ class DiffChart extends React.Component{
     return(
       <div className="chart-display">
         <LineChart width={ chartWidth } height={chartHeight} data={data}>
+          <Legend verticalAlign="top" height={36}/>
           <Line type="monotone" dataKey="diff" stroke="#8884d8" />
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="name" />
