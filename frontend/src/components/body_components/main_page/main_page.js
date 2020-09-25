@@ -1,12 +1,12 @@
 import React from 'react';
 
 import ChartFilterButtons from './chart_filter_buttons';
-import ChartDisplay from './chart_display/chart_display';
+import ChartDisplayContainer from './chart_display/chart_display_container';
 
 const MainPage = () => (
   <div className="main-page">
     <ChartFilterButtons/>
-    <ChartDisplay/>
+    <ChartDisplayContainer/>
   </div>
 )
 

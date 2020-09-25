@@ -9,7 +9,7 @@ const PredictionsReducer = (state={}, action) => {
     case RECEIVE_PREDICTIONS:
       return action.predictions.data;
     case RECEIVE_PREDICTION:
-      let newState = state.concat(action.prediction);
+      let newState = state.concat(action.prediction.data);
       newState.shift();
       return newState;
     default:
