@@ -1,45 +1,44 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
-
-// recharts notes
-// name is label per point which is shown on x-axis, maybe timestamp for me
-// uv and the value of the point according to the y axis, price for me
-// pv ?
-// amt?
+import NormalChartContainer from '../charts/normal_chart/normal_chart_container';
+import DiffChartContainer from '../charts/diff_chart/diff_chart_container';
+import MoonLoaderContainer from '../../../loaders/moon_loader_container';
 
 class ChartDisplay extends React.Component{
   constructor(props){
     super(props);
-  }
-
-  componentDidMount(){
-    const { fetchPredictions } = this.props;
-    fetchPredictions();
-  }
-
-  render(){
-    const { predictions } = this.props;
-    if(!predictions || Object.keys(predictions).length === 0){
-      return null;
+    this.state = {
+      loading: true,
+      chartType: 'normal'
     }
-    debugger;
-    // const data = [{name: 'Page A', uv: 400, pv: 0, amt: 2400}, {name: 'Page B', uv: 800, pv: 2400, amt: 0}, {name: 'Page B', uv: 700, pv: 2400, amt: 0}];
-    const data = predictions.map((elem) => {
-      return {
-        name: 'x',
-        prediction: elem.prediction,
-        target: elem.target
-      }
-    })
+  }
+  componentDidMount(){
+    setInterval(() => {
+      this.setState({loading: false});
+    }, 1000)
+  }
+  changeChartType(type){
+    return () => {
+      this.setState({ chartType: type });
+    }
+  }
+  render(){
+    let { loading, chartType } = this.state;
+    let chart;
+    // if(loading){
+    //   return <MoonLoaderContainer/>;
+    // }
+    if(chartType === 'normal'){
+      chart = <NormalChartContainer/>;
+    }else if(chartType === 'diff'){
+      chart = <DiffChartContainer changeChartType={this.changeChartType('diff')}/>;
+    }
     return(
-      <div className="chart-display">
-        <LineChart width={ 800 } height={500} data={data}>
-          <Line type="monotone" dataKey="prediction" stroke="#8884d8" />
-          <Line type="monotone" dataKey="target" stroke="#8884d8" />
-          <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="name" />
-          <YAxis />
-        </LineChart>
+      <div className='chart-display-container'>
+        <div className='chart-display-buttons'>
+          <p className='chart-display-button' onClick={this.changeChartType('normal')}>normal</p>
+          <p className='chart-display-button' onClick={this.changeChartType('diff')}>diff</p>
+        </div>
+        {chart}
       </div>
     )
   }

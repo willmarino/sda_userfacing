@@ -7,7 +7,7 @@ const Prediction = require('../models/prediction');
 router.get("/", (req, res) => {
   Prediction.find()
     .then((predictionResponse) => {
-      res.send(predictionResponse);
+      res.send(predictionResponse.slice(0, 50));
     })
 })
 

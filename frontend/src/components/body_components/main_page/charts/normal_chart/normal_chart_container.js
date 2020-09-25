@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import ChartDisplay from './chart_display';
-import { fetchPredictions } from '../../../../actions/predictions';
+import { fetchPredictions } from '../../../../../actions/predictions';
+import NormalChart from './normal_chart';
 
 const msp = (state) => ({
   predictions: state.predictions
@@ -10,4 +10,4 @@ const mdp = (dispatch) => ({
   fetchPredictions: () => dispatch(fetchPredictions())
 })
 
-export default connect(msp, mdp)(ChartDisplay);
+export default connect(msp, mdp)(NormalChart);

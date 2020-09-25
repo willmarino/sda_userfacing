@@ -9,8 +9,6 @@ const PredictionsReducer = (state={}, action) => {
   switch(action.type){
     case RECEIVE_PREDICTIONS:
       return action.predictions.data;
-    case RECEIVE_PREDICTION:
-    case REMOVE_PREDICTION:
     default:
       return state;
   }
