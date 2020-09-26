@@ -7,9 +7,9 @@ class ChartFilterButton extends React.Component{
     this.state = {
       dropdownOpen: false
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.switchDropdown = this.switchDropdown.bind(this);
   }
-  handleClick(){
+  switchDropdown(){
     this.setState({ dropdownOpen: !this.state.dropdownOpen });
   }
   render(){
@@ -17,13 +17,13 @@ class ChartFilterButton extends React.Component{
     let dropdown;
     let buttonClassNames = "chart-filter-button-current";
     if(this.state.dropdownOpen){
-      dropdown = <FilterButtonDropdown options={options} changeFunc={changeFunc}/>;
+      dropdown = <FilterButtonDropdown options={options} changeFunc={changeFunc} switchDropdown={this.switchDropdown}/>;
       buttonClassNames = "chart-filter-button-current cfbc-active";
     }
     return(
       <div className="chart-filter-button">
         <p className="chart-filter-button-label">{label}</p>
-        <div className={buttonClassNames} onClick={this.handleClick}>
+        <div className={buttonClassNames} onClick={this.switchDropdown}>
           <p>{curOption}</p>
         </div>
         {dropdown}
