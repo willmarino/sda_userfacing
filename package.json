@@ -22,6 +22,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.6",
     "nodemon": "^2.0.4",
+    "react-graph-vis": "^1.0.5",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-spinners": "^0.9.0",

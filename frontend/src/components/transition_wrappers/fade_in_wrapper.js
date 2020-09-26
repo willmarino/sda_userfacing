@@ -10,7 +10,6 @@ class FadeInWrapper extends React.Component{
   }
 
   componentDidMount(){
-    debugger;
     this.setState({ ready: true });
   }
 

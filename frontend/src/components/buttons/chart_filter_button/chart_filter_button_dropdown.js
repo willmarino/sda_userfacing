@@ -3,10 +3,10 @@ import React from 'react';
 const FilterButtonDropdown = (props) => {
   const { options } = props;
   const optionsListItems = options.map((option) => {
-    return <li>{option}</li>;
+    return <li className="filter-button-dropdown-listitem">{option}</li>;
   })
   return(
-    <ul>
+    <ul className="filter-button-dropdown-list">
       {optionsListItems}
     </ul>
   )

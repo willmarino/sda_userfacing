@@ -8,7 +8,7 @@ const LC = require('../local_cache');
 router.get("/", (req, res) => {
   Prediction.find()
     .then((predictionResponse) => {
-      res.send(predictionResponse.slice(0, 20));
+      res.send(predictionResponse.slice(0, 100));
     })
 })
 

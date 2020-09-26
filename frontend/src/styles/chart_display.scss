@@ -19,16 +19,26 @@
   .chart-display-button{
     height: 25px;
     width: 60px;
-    margin: 10px 20px;
+    margin: 10px 20px 10px 55px;
     text-align: center;
     line-height: 25px;
+    border-radius: 5px;
+    background:#F5F5F5;
+    box-shadow: 0 0 1px 1px#A9A9A9;
+    // margin-left: 55px;
+
+    transition: all .3s;
   }
 
   .chart-display-button:hover{
     cursor: pointer;
+    color: white;
+    background: black;
   }
 
-  #first-display-button{
-    margin-left: 55px;
+  #chart-display-button-active{
+    color: white;
+    background: black;
   }
+
 }

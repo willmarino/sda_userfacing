@@ -26,7 +26,6 @@ class LinRegChart extends React.Component{
         target: elem.target
       }
     })
-    debugger;
     return(
       <div className="chart-display">
         <LineChart width={ chartWidth } height={chartHeight} data={data}>

@@ -1,16 +1,14 @@
 import React from 'react';
 import LinRegChartContainer from '../charts/lin_reg_chart/lin_reg_chart_container';
-// import NormalChartContainer from '../charts/normal_chart/normal_chart_container';
-// import DiffChartContainer from '../charts/diff_chart/diff_chart_container';
-// import MoonLoaderContainer from '../../../loaders/moon_loader_container';
 
 class ChartDisplay extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      live: true,
+      startLive: false,
       chartHeight: null,
-      chartWidth: null
+      chartWidth: null,
+      buttonActive: false
     }
     this.dataFetchingInterval = null;
     this.bindChartDimensions = this.bindChartDimensions.bind(this);
@@ -23,29 +21,33 @@ class ChartDisplay extends React.Component{
 
     fetchPredictions()
       .then(() => {
-        this.executeLiveDataFeed();
+        if(this.state.startLive){
+          this.executeLiveDataFeed();
+        }
       })
     this.bindChartDimensions()
   }
+  componentWillUnmount(){
+    this.closeLiveDataFeed();
+  }
   switchLiveDataInterval(){
-    console.log(`interval is ${this.dataFetchingInterval}, so im...`);
     if(this.dataFetchingInterval){
-      console.log('closing interval')
       this.closeLiveDataFeed();
     }else{
-      console.log('opening interval')
-      this.executeLiveDataFeed()
+      this.executeLiveDataFeed();
     }
   }
   closeLiveDataFeed(){
     clearInterval(this.dataFetchingInterval);
     this.dataFetchingInterval = null;
+    this.setState({ buttonActive: false });
   }
   executeLiveDataFeed(){
     const { fetchMostRecentPrediction } = this.props;
     this.dataFetchingInterval = setInterval(() => {
       fetchMostRecentPrediction()
     }, 1000);
+    this.setState({ buttonActive: true });
   }
   bindChartDimensions(){
     const chartContainer = document.getElementById('chart-display-container');
@@ -59,13 +61,13 @@ class ChartDisplay extends React.Component{
     this.setState({ chartHeight, chartWidth });
   }
   render(){
-    let { chartWidth, chartHeight } = this.state;
+    let { chartWidth, chartHeight, buttonActive } = this.state;
+    const ids = (buttonActive) ? 'chart-display-button-active' : null;
+    const message = (buttonActive) ? 'Live' : 'Go Live';
     return(
       <div className='chart-display-container' id="chart-display-container">
         <div className='chart-display-buttons'>
-          {/* <p id="first-display-button" className='chart-display-button' onClick={this.changeChartType('normal')}>normal</p>
-          <p className='chart-display-button' onClick={this.changeChartType('diff')}>diff</p> */}
-          <p id="first-display-button" className='chart-display-button' onClick={this.switchLiveDataInterval}>Live</p>
+          <p id={ids} className='chart-display-button' onClick={this.switchLiveDataInterval}>{message}</p>
         </div>
         <LinRegChartContainer
           chartHeight={chartHeight}
