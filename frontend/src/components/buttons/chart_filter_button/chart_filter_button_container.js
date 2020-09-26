@@ -8,7 +8,7 @@ import {
 } from '../../../actions/fetch_config';
 
 const msp = (state, ownProps) => ({
-  curOption: state.fetchConfig[ownProps.label],
+  curOption: state.config.fetchConfig[ownProps.label],
   label: ownProps.label,
   options: ownProps.options
 })

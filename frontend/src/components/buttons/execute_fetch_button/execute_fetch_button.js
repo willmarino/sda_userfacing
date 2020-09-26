@@ -11,9 +11,10 @@ class ExecuteFetchButton extends React.Component{
     this.switchButtonColor = this.switchButtonColor.bind(this);
   }
   handleClick(){
-    const { fetchPredictions, fetchConfig } = this.props;
+    const { fetchPredictions, fetchConfig, stopDatafeed } = this.props;
     fetchPredictions(fetchConfig);
     this.switchButtonColor();
+    stopDatafeed();
   }
   switchButtonColor(){
     this.setState({ buttonId: 'exec-fetch-button-active' }, () => {

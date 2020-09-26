@@ -5,7 +5,7 @@ class ChartDisplay extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      startLive: false,
+      // startLive: false,
       chartHeight: null,
       chartWidth: null,
       buttonActive: false
@@ -13,40 +13,27 @@ class ChartDisplay extends React.Component{
     this.dataFetchingInterval = null;
     this.bindChartDimensions = this.bindChartDimensions.bind(this);
     this.executeLiveDataFeed = this.executeLiveDataFeed.bind(this);
-    this.closeLiveDataFeed = this.closeLiveDataFeed.bind(this);
-    this.switchLiveDataInterval = this.switchLiveDataInterval.bind(this);
   }
   componentDidMount(){
-    const { fetchPredictions } = this.props;
+    const { fetchPredictions, datafeedConfig } = this.props;
+    const { isLive } = datafeedConfig;
 
     fetchPredictions()
       .then(() => {
-        if(this.state.startLive){
-          this.executeLiveDataFeed();
-        }
+        this.executeLiveDataFeed();
       })
     this.bindChartDimensions()
   }
   componentWillUnmount(){
-    this.closeLiveDataFeed();
-  }
-  switchLiveDataInterval(){
-    if(this.dataFetchingInterval){
-      this.closeLiveDataFeed();
-    }else{
-      this.executeLiveDataFeed();
-    }
-  }
-  closeLiveDataFeed(){
-    clearInterval(this.dataFetchingInterval);
-    this.dataFetchingInterval = null;
-    this.setState({ buttonActive: false });
+    const { stopDatafeed } = this.props;
+    stopDatafeed();
   }
   executeLiveDataFeed(){
-    const { fetchMostRecentPrediction } = this.props;
-    this.dataFetchingInterval = setInterval(() => {
+    const { fetchMostRecentPrediction, startDatafeed } = this.props;
+    const interval = setInterval(() => {
       fetchMostRecentPrediction()
     }, 1000);
+    startDatafeed(interval);
     this.setState({ buttonActive: true });
   }
   bindChartDimensions(){
@@ -61,13 +48,15 @@ class ChartDisplay extends React.Component{
     this.setState({ chartHeight, chartWidth });
   }
   render(){
-    let { chartWidth, chartHeight, buttonActive } = this.state;
-    const ids = (buttonActive) ? 'chart-display-button-active' : null;
-    const message = (buttonActive) ? 'Stop Live Datafeed' : 'Start Live Datafeed';
+    const { datafeedConfig, stopDatafeed, startDatafeed } = this.props;
+    const { chartWidth, chartHeight, buttonActive } = this.state;
+    const ids = (datafeedConfig.live) ? 'chart-display-button-active' : null;
+    const message = (datafeedConfig.live) ? 'Stop Live Datafeed' : 'Start Live Datafeed';
+    const onClickFunc = (datafeedConfig.live) ? () => { stopDatafeed() } : () => { this.executeLiveDataFeed() };
     return(
       <div className='chart-display-container' id="chart-display-container">
         <div className='chart-display-buttons'>
-          <p id={ids} className='chart-display-button' onClick={this.switchLiveDataInterval}>{message}</p>
+          <p id={ids} className='chart-display-button' onClick={onClickFunc}>{message}</p>
         </div>
         <LinRegChartContainer
           chartHeight={chartHeight}

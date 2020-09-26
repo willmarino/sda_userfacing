@@ -8,7 +8,7 @@ import {
 } from '../../../actions/fetch_config';
 
 const msp = (state) => ({
-  fetchConfig: state.fetchConfig
+  fetchConfig: state.config.fetchConfig
 })
 
 const mdp = (dispatch) => ({
