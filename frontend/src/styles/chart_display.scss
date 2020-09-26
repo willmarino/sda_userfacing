@@ -17,6 +17,7 @@
   box-sizing: border-box;
 
   .chart-display-button{
+    position: relative;
     height: 25px;
     width: 60px;
     margin: 10px 20px 10px 55px;
@@ -25,7 +26,6 @@
     border-radius: 5px;
     background:#F5F5F5;
     box-shadow: 0 0 1px 1px#A9A9A9;
-    // margin-left: 55px;
 
     transition: all .3s;
   }

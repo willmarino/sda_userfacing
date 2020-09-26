@@ -6,4 +6,61 @@
   justify-content: space-between;
 
   box-sizing: border-box;
+
+  p{
+    user-select: none;
+  }
+
+  .chart-filter-button{
+  }
+
+  .chart-filter-button-current{
+    border-radius: 5px;
+    background:#F5F5F5;
+    box-shadow: 0 0 1px 1px#A9A9A9;
+    box-sizing: border-box;
+    padding: 3px 10px;
+    transition: all .3s;
+  }
+  .chart-filter-button-current:hover{
+    cursor: pointer;
+    background: white;
+  }
+
+  .cfbc-active{
+    background: white;
+  }
+}
+
+.filter-button-dropdown-list{
+
+  position: absolute;
+  top: 28vh;
+  box-shadow: 0 0 1px 1px#A9A9A9;
+  border-radius: 5px;
+
+
+  p {
+    user-select: none;
+  }
+
+  .filter-button-dropdown-listitem{
+    padding: 5px;
+    background: white;
+    border-radius: 5px;
+  }
+
+  .filter-button-dropdown-listitem:not(:last-of-type){
+    border-bottom: 1px solid #A9A9A9;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .filter-button-dropdown-listitem:hover{
+
+  }
+}
+
+.filter-button-dropdown-list:hover{
+  cursor: pointer;
 }
