@@ -1,11 +1,21 @@
 import React from 'react';
-import FilterButton from '../../buttons/chart_filter_button/chart_filter_button';
+import ChartFilterButton from '../../buttons/chart_filter_button/chart_filter_button';
 
-const ChartFilterButtons = () => {
+const ChartFilterButtons = (props) => {
+  const allFetchConfigOptions = {
+    algorithm: ["Linear Regression", "SVM"],
+    stock: ["TSLA", "AAPL"],
+    timeframe: ["Recent", "Current Day"]
+
+  }
+  const { changeAlgorithm, changeStock, changeTimeframe, fetchConfig } = props;
+  let { algorithm, stock, timeframe } = fetchConfig;
+  debugger;
   return(
     <div className="chart-filter-buttons">
-      <FilterButton label="Algorithm" options={["Linear Regression", 'SVM']} curOption={"Linear Regression"}/>
-      <FilterButton label="Stock" options={["TSLA", "AAPL"]} curOption={"TSLA"}/>
+      <ChartFilterButton label="Algorithm" curOption={algorithm} options={allFetchConfigOptions.algorithm} changeFunc={changeAlgorithm}/>
+      <ChartFilterButton label="Stock" curOption={stock} options={allFetchConfigOptions.stock} changeFunc={changeStock}/>
+      <ChartFilterButton label="Timeframe" curOption={timeframe} options={allFetchConfigOptions.timeframe} changeFunc={changeTimeframe}/>
     </div>
   )
 }
