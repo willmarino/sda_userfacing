@@ -63,7 +63,7 @@ class ChartDisplay extends React.Component{
   render(){
     let { chartWidth, chartHeight, buttonActive } = this.state;
     const ids = (buttonActive) ? 'chart-display-button-active' : null;
-    const message = (buttonActive) ? 'Live' : 'Go Live';
+    const message = (buttonActive) ? 'Stop Live Datafeed' : 'Start Live Datafeed';
     return(
       <div className='chart-display-container' id="chart-display-container">
         <div className='chart-display-buttons'>

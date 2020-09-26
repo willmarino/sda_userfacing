@@ -13,11 +13,14 @@ const ChartFilterButtons = (props) => {
   let { algorithm, stock, timeframe } = fetchConfig;
   debugger;
   return(
-    <div className="chart-filter-buttons">
-      <ChartFilterButton label="Algorithm" curOption={algorithm} options={allFetchConfigOptions.algorithm} changeFunc={changeAlgorithm}/>
-      <ChartFilterButton label="Stock" curOption={stock} options={allFetchConfigOptions.stock} changeFunc={changeStock}/>
-      <ChartFilterButton label="Timeframe" curOption={timeframe} options={allFetchConfigOptions.timeframe} changeFunc={changeTimeframe}/>
-      <ExecFetchButtonContainer/>
+    <div className="chart-filter-buttons-container">
+      <p className='floating-warning'>* Using filters to look for specific prediction data will stop the live data feed if it is running *</p>
+      <div className="chart-filter-buttons">
+        <ChartFilterButton label="Algorithm" curOption={algorithm} options={allFetchConfigOptions.algorithm} changeFunc={changeAlgorithm}/>
+        <ChartFilterButton label="Stock" curOption={stock} options={allFetchConfigOptions.stock} changeFunc={changeStock}/>
+        <ChartFilterButton label="Timeframe" curOption={timeframe} options={allFetchConfigOptions.timeframe} changeFunc={changeTimeframe}/>
+        <ExecFetchButtonContainer/>
+      </div>
     </div>
   )
 }

@@ -1,11 +1,18 @@
-.chart-filter-buttons{
-  // width: 20%;
-  min-width: 300px;
+.chart-filter-buttons-container{
   height: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart-filter-buttons{
+  min-width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  margin-bottom: 15px;
 
   p{
     user-select: none;
@@ -97,4 +104,8 @@
 #exec-fetch-button-active{
   background: black;
   color: white;
+}
+
+.floating-warning{
+  color: gray;
 }
