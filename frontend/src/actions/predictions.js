@@ -19,16 +19,16 @@ const removeOldestPrediction = () => ({
   type: REMOVE_OLDEST_PREDICTION
 })
 
-export const fetchPredictions = () => (dispatch) => (
-  PredictionsUtil.fetchPredictions()
+export const fetchPredictions = (options) => (dispatch) => (
+  PredictionsUtil.fetchPredictions(options)
     .then((res) => {
       dispatch(receivePredictions(res));
     })
     .catch((err) => console.log(err))
 )
 
-export const fetchMostRecentPrediction = (options) => (dispatch) => (
-  PredictionsUtil.fetchMostRecentPrediction(options)
+export const fetchMostRecentPrediction = () => (dispatch) => (
+  PredictionsUtil.fetchMostRecentPrediction()
     .then((res) => {
       dispatch(receivePrediction(res));
     })

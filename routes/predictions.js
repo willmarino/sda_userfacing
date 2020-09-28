@@ -3,12 +3,15 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Prediction = require('../models/prediction');
 const LC = require('../local_cache');
+const filterDBData = require('../helpers/predictions_helpers');
 
 
 router.get("/", (req, res) => {
+  const filters = req.query;
   Prediction.find()
     .then((predictionResponse) => {
-      res.send(predictionResponse.slice(0, 100));
+      const predictions = filterDBData(predictionResponse, filters);
+      res.send(predictions);
     })
 })
 

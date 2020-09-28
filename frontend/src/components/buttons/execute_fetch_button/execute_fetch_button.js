@@ -11,8 +11,7 @@ class ExecuteFetchButton extends React.Component{
     this.switchButtonColor = this.switchButtonColor.bind(this);
   }
   handleClick(){
-    const { fetchPredictions, fetchConfig, stopDatafeed } = this.props;
-    fetchPredictions(fetchConfig);
+    const { stopDatafeed } = this.props;
     this.switchButtonColor();
     stopDatafeed();
   }
@@ -33,4 +32,4 @@ class ExecuteFetchButton extends React.Component{
   }
 }
 
-export default ExecuteFetchButton
+export default ExecuteFetchButton;

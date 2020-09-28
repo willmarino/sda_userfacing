@@ -4,7 +4,8 @@ import HeaderNav from './header_nav';
 
 const Header = () => (
   <div className='header'>
-    <p>Hey, welcome to the party</p>
+    <p>Hello, welcome to my market data analysis</p>
+    <p>Confused? Check out the about page</p>
     <HeaderNav/>
   </div>
 )

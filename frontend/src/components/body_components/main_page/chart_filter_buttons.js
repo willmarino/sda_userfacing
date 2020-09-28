@@ -4,22 +4,35 @@ import ExecFetchButtonContainer from '../../buttons/execute_fetch_button/execute
 
 const ChartFilterButtons = (props) => {
   const allFetchConfigOptions = {
-    algorithm: ["Linear Regression", "SVM"],
-    stock: ["TSLA", "AAPL"],
+    algorithm: ["Linear Regression"],
+    stock: ["TSLA"],
     timeframe: ["Recent", "Current Day"]
 
   }
-  const { changeAlgorithm, changeStock, changeTimeframe, fetchConfig } = props;
+  const { changeAlgorithm, changeStock, changeTimeframe, fetchConfig, stopDatafeed } = props;
   let { algorithm, stock, timeframe } = fetchConfig;
-  debugger;
   return(
     <div className="chart-filter-buttons-container">
       <p className='floating-warning'>* Using filters to look for specific prediction data will stop the live data feed if it is running *</p>
       <div className="chart-filter-buttons">
-        <ChartFilterButton label="Algorithm" curOption={algorithm} options={allFetchConfigOptions.algorithm} changeFunc={changeAlgorithm}/>
-        <ChartFilterButton label="Stock" curOption={stock} options={allFetchConfigOptions.stock} changeFunc={changeStock}/>
-        <ChartFilterButton label="Timeframe" curOption={timeframe} options={allFetchConfigOptions.timeframe} changeFunc={changeTimeframe}/>
-        <ExecFetchButtonContainer/>
+        <ChartFilterButton
+          label="Algorithm"
+          curOption={algorithm}
+          options={allFetchConfigOptions.algorithm}
+          changeFunc={changeAlgorithm}
+          stopDatafeed={stopDatafeed}/>
+        <ChartFilterButton
+          label="Stock"
+          curOption={stock}
+          options={allFetchConfigOptions.stock}
+          changeFunc={changeStock}
+          stopDatafeed={stopDatafeed}/>
+        <ChartFilterButton
+          label="Timeframe"
+          curOption={timeframe}
+          options={allFetchConfigOptions.timeframe}
+          changeFunc={changeTimeframe}
+          stopDatafeed={stopDatafeed}/>
       </div>
     </div>
   )

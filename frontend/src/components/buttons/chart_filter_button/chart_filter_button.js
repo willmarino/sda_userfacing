@@ -13,11 +13,15 @@ class ChartFilterButton extends React.Component{
     this.setState({ dropdownOpen: !this.state.dropdownOpen });
   }
   render(){
-    const { options, curOption, label, changeFunc } = this.props;
+    const { options, curOption, label, changeFunc, stopDatafeed } = this.props;
     let dropdown;
     let buttonClassNames = "chart-filter-button-current";
     if(this.state.dropdownOpen){
-      dropdown = <FilterButtonDropdown options={options} changeFunc={changeFunc} switchDropdown={this.switchDropdown}/>;
+      dropdown = <FilterButtonDropdown
+                    options={options}
+                    changeFunc={changeFunc}
+                    stopDatafeed={stopDatafeed}
+                    switchDropdown={this.switchDropdown}/>;
       buttonClassNames = "chart-filter-button-current cfbc-active";
     }
     return(

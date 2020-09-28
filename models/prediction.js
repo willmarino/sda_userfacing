@@ -14,6 +14,10 @@ const PredictionSchema = new Schema({
     type: Number,
     required: true
   },
+  algorithm: {
+    type: String,
+    required: true
+  },
   timestamp: {
     type: Number,
     required: true
