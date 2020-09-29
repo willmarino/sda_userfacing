@@ -1,10 +1,28 @@
 
 
 const filterDBData = (data, filters) => {
+  let res = [];
   data = filterDBDataByTime(data, filters.timeframe);
   data = filterDBDataByAlgo(data, filters.algorithm);
   data = filterDBDataByStock(data, filters.stock);
-  return data;
+  if(filters.timeframe === 'Recent'){
+    return data;
+  }else{
+    let divisor = Math.floor(data.length / 100);
+    let i = 0;
+    let j = 1;
+    while (i < data.length){
+      const curDatum = data[i];
+      if(j === divisor){
+        res.push(curDatum);
+        j = 1;
+      }else{
+        j += 1;
+      }
+      i += 1
+    }
+    return res;
+  }
 }
 const filterDBDataByTime = (data, time) => {
   let res = [];
