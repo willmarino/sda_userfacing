@@ -20,4 +20,4 @@ if (process.env.NODE_ENV === 'production') {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/predictions", predictionRouter);
-app.listen(5005, () => console.log('listening on 5005'));
+app.listen((process.env.PORT || 5005), () => console.log('listening'));
