@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
 
 class SocialsDropdown extends React.Component{
   constructor(props){
@@ -7,9 +8,14 @@ class SocialsDropdown extends React.Component{
   render(){
     return(
       <div className="socials-dropdown">
-        <p>LinkedIn</p>
-        <p>LinkedIn</p>
-        <p>LinkedIn</p>
+        <div className="socials-dropdown-row">
+          <AiFillLinkedin/>
+          <p>LinkedIn</p>
+        </div>
+        <div className="socials-dropdown-row">
+          <AiFillGithub/>
+          <p>Github</p>
+        </div>
       </div>
     )
   }

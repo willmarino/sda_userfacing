@@ -37,10 +37,10 @@ class LinRegChart extends React.Component{
         <LineChart width={ chartWidth } height={chartHeight} data={data}>
           <Legend verticalAlign="top" height={36}/>
           <Line type="monotone" dataKey="prediction" stroke="#1340bd" />
-          <Line type="monotone" dataKey="target" stroke="#b31717" />
+          <Line type="monotone" dataKey="target" stroke="#b31717" strokeWidth={3} />
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="name"/>
-          <YAxis type="number" domain={[min - 20, max + 20]} ticks={ticks}/>
+          <YAxis type="number" domain={[min, max]} ticks={ticks}/>
         </LineChart>
       </div>
     )
