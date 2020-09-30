@@ -1,0 +1,19 @@
+.socials-button{
+  user-select: none;
+  position: absolute;
+  top: 3vh;
+  right: 5vw;
+  padding: 5px;
+  border: 1px solid #006bb3;
+  // border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 1px 1px #A9A9A9;
+  background: #F5F5F5;
+  transition: all .3s;
+}
+
+
+.socials-button:hover{
+  cursor: pointer;
+  background: white;
+}

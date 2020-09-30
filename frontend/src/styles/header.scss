@@ -8,8 +8,15 @@
 
   box-sizing: border-box;
   padding-bottom: 2%;
+  p{
+    user-select: none;
+  }
 
 
+}
+
+.header-header{
+  font-size: 30px;
 }
 
 .header-nav{
@@ -46,6 +53,8 @@
     width: 100%;
   }
 }
+
+
 
 .header-button-label{
   text-align: center;

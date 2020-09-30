@@ -30,7 +30,7 @@ class ChartDisplay extends React.Component{
   }
   componentDidUpdate(prevProps){
     const { fetchConfig, fetchPredictions } = this.props;
-    if(prevProps.fetchConfig !== fetchConfig && fetchConfig.timeframe === 'Recent'){
+    if(prevProps.fetchConfig !== fetchConfig && fetchConfig.timeframe === 'Live'){
       // refetch and start datafeed
       this.executeLiveDataFeed();
     }else if(prevProps.fetchConfig !== this.props.fetchConfig){
@@ -66,7 +66,7 @@ class ChartDisplay extends React.Component{
     const { chartWidth, chartHeight, buttonActive } = this.state;
     const ids = (datafeedConfig.live) ? 'chart-display-button-active' : null;
     const message = (datafeedConfig.live) ? 'Stop Live Datafeed' : 'Start Live Datafeed';
-    const onClickFunc = (datafeedConfig.live) ? () => { stopDatafeed() } : () => { changeTimeframe('Recent') };
+    const onClickFunc = (datafeedConfig.live) ? () => { stopDatafeed() } : () => { changeTimeframe('Live') };
     return(
       <div className='chart-display-container' id="chart-display-container">
         <div className='chart-display-buttons'>

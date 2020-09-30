@@ -5,7 +5,7 @@ const filterDBData = (data, filters) => {
   data = filterDBDataByTime(data, filters.timeframe);
   data = filterDBDataByAlgo(data, filters.algorithm);
   data = filterDBDataByStock(data, filters.stock);
-  if(filters.timeframe === 'Recent'){
+  if(filters.timeframe === 'Live'){
     return data;
   }else{
     let divisor = Math.floor(data.length / 100);
@@ -26,7 +26,7 @@ const filterDBData = (data, filters) => {
 }
 const filterDBDataByTime = (data, time) => {
   let res = [];
-  if(time === "Recent"){
+  if(time === "Live"){
     return data.slice(-50);
   }else if(time === "Current Day"){
     let startOfDay = new Date().setHours(0, 0, 0, 0);

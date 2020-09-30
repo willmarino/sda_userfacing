@@ -8,7 +8,7 @@ import {
 const defaultState = {
   algorithm: 'Linear Regression',
   stock: 'TSLA',
-  timeframe: 'Recent'
+  timeframe: 'Live'
 }
 
 const FetchConfigReducer = (state=defaultState, action) => {

@@ -6,14 +6,13 @@ const ChartFilterButtons = (props) => {
   const allFetchConfigOptions = {
     algorithm: ["Linear Regression"],
     stock: ["TSLA"],
-    timeframe: ["Recent", "Current Day"]
+    timeframe: ["Live", "Current Day"]
 
   }
   const { changeAlgorithm, changeStock, changeTimeframe, fetchConfig, stopDatafeed } = props;
   let { algorithm, stock, timeframe } = fetchConfig;
   return(
     <div className="chart-filter-buttons-container">
-      <p className='floating-warning'>* Using filters to look for specific prediction data will stop the live data feed if it is running *</p>
       <div className="chart-filter-buttons">
         <ChartFilterButton
           label="Algorithm"
