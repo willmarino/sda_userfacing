@@ -16,11 +16,11 @@ router.get("/", (req, res) => {
 })
 
 router.get("/most_recent", (req, res) => {
-  Prediction.find().sort({ _id: -1 }).limit(1)
-  // Prediction.find()
-    .then((latestPrediction) => {
-      // const latestPrediction = predictions[LC.cur];
-      // LC.cur += 1;
+  // Prediction.find().sort({ _id: -1 }).limit(1)
+  Prediction.find()
+    .then((predictions) => {
+      const latestPrediction = predictions[LC.cur];
+      LC.cur += 1;
       res.send(latestPrediction);
     })
 })

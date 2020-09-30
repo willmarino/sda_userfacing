@@ -1,12 +1,6 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 
-// recharts notes
-// name is label per point which is shown on x-axis, maybe timestamp for me
-// uv and the value of the point according to the y axis, price for me
-// pv ?
-// amt?
-
 class LinRegChart extends React.Component{
   constructor(props){
     super(props);
@@ -20,12 +14,24 @@ class LinRegChart extends React.Component{
     if(!predictions || Object.keys(predictions).length === 0){
       return null;
     }
-    const data = predictions.map((elem) => {
-      return {
-        prediction: elem.prediction,
-        target: elem.target
-      }
+    let max = Math.max(predictions[0].prediction, predictions[0].target);
+    let min = Math.min(predictions[0].prediction, predictions[0].target);
+    const data = [];
+    predictions.forEach((elem) => {
+      data.push({prediction: elem.prediction, target: elem.target });
+      max = Math.round(Math.max(max, elem.prediction, elem.target));
+      min = Math.round(Math.min(min, elem.prediction, elem.target));
     })
+    console.log(min, max);
+    const ticks = [min];
+    const diff = max - min;
+    const numSteps = 5
+    const step = Math.round(diff / numSteps);
+    for(let i = 1; i < numSteps - 1; i++){
+      ticks.push(Math.round(min + (step * i)));
+    }
+    ticks.push(max);
+    console.log(ticks);
     return(
       <div className="chart-display">
         <LineChart width={ chartWidth } height={chartHeight} data={data}>
@@ -34,7 +40,7 @@ class LinRegChart extends React.Component{
           <Line type="monotone" dataKey="target" stroke="#b31717" />
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="name"/>
-          <YAxis />
+          <YAxis type="number" domain={[min - 20, max + 20]} ticks={ticks}/>
         </LineChart>
       </div>
     )
