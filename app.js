@@ -4,6 +4,7 @@ const app = express();
 const db = require('./config/keys').MongoURI;
 const predictionRouter = require('./routes/predictions');
 const bodyParser = require('body-parser')
+const path = require('path');
 
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('db success'))
