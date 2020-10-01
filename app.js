@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const db = require('./config/keys').MongoURI;
 const predictionRouter = require('./routes/predictions');
+const db = require('./config/keys').MongoURI;
 const bodyParser = require('body-parser')
 const path = require('path');
 
@@ -17,8 +17,9 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
+const port = process.env.PORT || 5005;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/predictions", predictionRouter);
-app.listen((process.env.PORT || 5005), () => console.log('listening'));
+app.listen(port, () => console.log('listening'));
