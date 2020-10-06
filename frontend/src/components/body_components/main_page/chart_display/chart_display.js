@@ -44,7 +44,7 @@ class ChartDisplay extends React.Component{
     fetchPredictions(fetchConfig)
       .then(() => {
         const interval = setInterval(() => {
-          fetchMostRecentPrediction()
+          fetchMostRecentPrediction(fetchConfig.stock)
         }, 1000);
         startDatafeed(interval);
         this.setState({ buttonActive: true });

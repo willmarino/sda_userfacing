@@ -27,8 +27,8 @@ export const fetchPredictions = (options) => (dispatch) => (
     .catch((err) => console.log(err))
 )
 
-export const fetchMostRecentPrediction = () => (dispatch) => (
-  PredictionsUtil.fetchMostRecentPrediction()
+export const fetchMostRecentPrediction = (stock) => (dispatch) => (
+  PredictionsUtil.fetchMostRecentPrediction(stock)
     .then((res) => {
       dispatch(receivePrediction(res));
     })

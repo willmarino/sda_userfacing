@@ -12,7 +12,7 @@ const msp = (state) => ({
 
 const mdp = (dispatch) => ({
   fetchPredictions: (options) => dispatch(fetchPredictions(options)),
-  fetchMostRecentPrediction: () => dispatch(fetchMostRecentPrediction()),
+  fetchMostRecentPrediction: (stock) => dispatch(fetchMostRecentPrediction(stock)),
   startDatafeed: (interval) => dispatch(startDatafeed(interval)),
   stopDatafeed: () => dispatch(stopDatafeed()),
   changeTimeframe: (time) => dispatch(changeTimeframe(time))

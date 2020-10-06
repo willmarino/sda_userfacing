@@ -8,7 +8,7 @@ const filterDBData = require('../helpers/predictions_helpers');
 
 router.get("/", (req, res) => {
   const filters = req.query;
-  Prediction.find()
+  Prediction.find( { stock: req.query.stock } )
     .then((predictionResponse) => {
       const predictions = filterDBData(predictionResponse, filters);
       res.send(predictions);
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/most_recent", (req, res) => {
-  Prediction.find().sort({ _id: -1 }).limit(1)
+  Prediction.find( {stock: req.query.stock} ).sort({ _id: -1 }).limit(1)
   // Prediction.find()
     .then((latestPrediction) => {
       // const latestPrediction = predictions[LC.cur];
