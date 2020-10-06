@@ -5,7 +5,7 @@ import SocialsButton from './socials/socials_button';
 
 const Header = (props) => {
   debugger;
-  const confusionAbatement = (props.location.pathname === '/') ? <p>Confused? Check out the about page</p> : null;
+  const confusionAbatement = (props.location.pathname === '/') ? <p>Check out the about page for more information</p> : null;
   return(
     <div className='header'>
       <p className="header-header">Stock Price Analysis</p>

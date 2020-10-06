@@ -5,10 +5,10 @@
   right: 5vw;
   padding: 5px;
   border: 1px solid #006bb3;
-  // border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0 0 1px 1px #A9A9A9;
   background: #F5F5F5;
+
   transition: all .3s;
 }
 
@@ -20,11 +20,36 @@
 
 .socials-dropdown{
   position: absolute;
+  width: 100%;
   top: 4vh;
-  right: 5vw;
+  right: 0vw;
+  border: 1px solid #006bb3;
+  border-radius: 5px;
+  box-shadow: 0 0 1px 1px #A9A9A9;
 }
 
 .socials-dropdown-row{
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // border-radius: 5px;
   padding: 5px;
+  p{
+    color: black;
+    text-decoration: black;
+  }
+  
+}
+
+.socials-dropdown-row:first-of-type{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.socials-dropdown-row:last-of-type{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.socials-dropdown-row:hover{
+  background: #F5F5F5;
 }

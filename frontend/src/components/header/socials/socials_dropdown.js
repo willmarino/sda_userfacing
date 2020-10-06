@@ -8,14 +8,14 @@ class SocialsDropdown extends React.Component{
   render(){
     return(
       <div className="socials-dropdown">
-        <div className="socials-dropdown-row">
+        <a className="socials-dropdown-row" href="https://www.linkedin.com/in/william-marino/" target="_blank">
           <AiFillLinkedin/>
           <p>LinkedIn</p>
-        </div>
-        <div className="socials-dropdown-row">
+        </a>
+        <a className="socials-dropdown-row" href="https://github.com/willmarino" target="_blank">
           <AiFillGithub/>
           <p>Github</p>
-        </div>
+        </a>
       </div>
     )
   }
