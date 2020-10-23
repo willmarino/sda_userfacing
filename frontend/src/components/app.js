@@ -3,8 +3,6 @@ import React from 'react';
 import Header from './header/header';
 import Body from './body/body';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { black } from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,7 +23,6 @@ const theme = createMuiTheme({
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <Button variant="contained" color="primary">Hey its me, button</Button>
     <div className="app">
       <Header/>
       <Body/>

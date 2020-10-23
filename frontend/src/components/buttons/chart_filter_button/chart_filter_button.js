@@ -1,5 +1,6 @@
 import React from 'react';
 import FilterButtonDropdown from './chart_filter_button_dropdown';
+import Button from '@material-ui/core/Button';
 
 class ChartFilterButton extends React.Component{
   constructor(props){
@@ -10,6 +11,7 @@ class ChartFilterButton extends React.Component{
     this.switchDropdown = this.switchDropdown.bind(this);
   }
   switchDropdown(){
+    <Button variant="contained" color="primary">Hey its me, button</Button>
     this.setState({ dropdownOpen: !this.state.dropdownOpen });
   }
   render(){

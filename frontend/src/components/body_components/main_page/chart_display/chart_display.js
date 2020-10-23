@@ -29,10 +29,6 @@ class ChartDisplay extends React.Component{
     const { fetchPredictions, datafeedConfig, fetchConfig } = this.props;
     const { isLive } = datafeedConfig;
 
-    // fetchPredictions(fetchConfig)
-    //   .then(() => {
-    //     this.executeLiveDataFeed();
-    //   })
     this.executeLiveDataFeed();
     this.bindChartDimensions()
   }
