@@ -5,10 +5,22 @@ import {
 } from '../actions/fetch_config';
 
 
+const isActive = () => {
+  const curDate = new Date();
+  const day = curDate.getDay();
+  const hours = curDate.getHours();
+  if(day >= 1 && day <= 5){
+    if(hours >= 9 && hours <= 16){
+      return true;
+    }
+  }
+  return false;
+}
+
 const defaultState = {
   algorithm: 'Linear Regression',
   stock: 'TSLA',
-  timeframe: 'Live'
+  timeframe: (isActive()) ? 'Live' : 'Current Day'
 }
 
 const FetchConfigReducer = (state=defaultState, action) => {

@@ -12,6 +12,18 @@ class ChartDisplay extends React.Component{
     this.dataFetchingInterval = null;
     this.bindChartDimensions = this.bindChartDimensions.bind(this);
     this.executeLiveDataFeed = this.executeLiveDataFeed.bind(this);
+    this.isActive = this.isActive.bind(this);
+  }
+  isActive(){
+    const curDate = new Date();
+    const day = curDate.getDay();
+    const hours = curDate.getHours();
+    if(day >= 1 && day <= 5){
+      if(hours >= 9 && hours <= 16){
+        return true;
+      }
+    }
+    return false;
   }
   componentDidMount(){
     const { fetchPredictions, datafeedConfig, fetchConfig } = this.props;
@@ -43,11 +55,13 @@ class ChartDisplay extends React.Component{
     const { fetchPredictions, fetchMostRecentPrediction, startDatafeed, fetchConfig } = this.props;
     fetchPredictions(fetchConfig)
       .then(() => {
-        const interval = setInterval(() => {
-          fetchMostRecentPrediction(fetchConfig.stock)
-        }, 1000);
-        startDatafeed(interval);
-        this.setState({ buttonActive: true });
+        if(this.isActive()){
+          const interval = setInterval(() => {
+            fetchMostRecentPrediction(fetchConfig.stock)
+          }, 1000);
+          startDatafeed(interval);
+          this.setState({ buttonActive: true });
+        }
       })
   }
   bindChartDimensions(){
