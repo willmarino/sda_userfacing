@@ -16,6 +16,12 @@ const MuiChartFilterButton = (props) => {
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    select: {
+      fontSize: '16px'
+    },
+    menuItem: {
+      fontSize: '14px'
+    }
   }));
   const classes = useStyles();
 
@@ -25,11 +31,11 @@ const MuiChartFilterButton = (props) => {
     props.changeFunc(e.target.value);
   }
   const selectOptions = props.options.map((op) => {
-    return <MenuItem value={op} key={op}>{op}</MenuItem>
+    return <MenuItem className={classes.menuItem} value={op} key={op}>{op}</MenuItem>
   })
-  return <FormControl color="primary" variant="outlined" className={classes.formControl}>
+  return <FormControl color="primary" className={classes.formControl}>
       <InputLabel id="algo-label">{props.label}</InputLabel>
-      <Select labelId="algo-label" id="algo-select" value={buttonVal} onChange={handleChange} label={props.label}>
+      <Select labelId="algo-label" id="algo-select" value={buttonVal} onChange={handleChange} label={props.label} className={classes.select}>
         {selectOptions}
       </Select>
     </FormControl>

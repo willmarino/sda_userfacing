@@ -9,7 +9,7 @@ const HeaderButton = (props) => {
   }
   const useStyles = makeStyles((theme) => ({
     button: {
-      fontSize: '12px'
+      fontSize: '13px'
     }
   }));
   const classes = useStyles();
