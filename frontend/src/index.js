@@ -8,9 +8,9 @@ import './styles/index.scss'
 let store = configureStore()
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Root store={store}/>
-  </React.StrictMode>,
+  // <React.StrictMode>
+    <Root store={store}/>,
+  /* </React.StrictMode>, */
   document.getElementById('root')
 );
 

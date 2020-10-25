@@ -6,14 +6,14 @@ import {
 
 
 const isActive = () => {
-  const curDate = new Date();
-  const day = curDate.getDay();
-  const hours = curDate.getHours();
-  if(day >= 1 && day <= 5){
-    if(hours >= 9 && hours <= 16){
-      return true;
-    }
-  }
+  // const curDate = new Date();
+  // const day = curDate.getDay();
+  // const hours = curDate.getHours();
+  // if(day >= 1 && day <= 5){
+  //   if(hours >= 9 && hours <= 16){
+  //     return true;
+  //   }
+  // }
   return false;
 }
 

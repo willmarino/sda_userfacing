@@ -1,9 +1,7 @@
 import React from 'react';
-import ChartFilterButton from '../../buttons/chart_filter_button/chart_filter_button';
-import ExecFetchButtonContainer from '../../buttons/execute_fetch_button/execute_fetch_button_container';
 import { fetchAvailableStocks } from '../../../util/curstock_util';
+import MuiChartFilterButton from '../../buttons/chart_filter_button/mui_chart_select';
 
-// const ChartFilterButtons = (props) => {
 class ChartFilterButtons extends React.Component{
   constructor(props){
     super(props);
@@ -25,7 +23,6 @@ class ChartFilterButtons extends React.Component{
     }
     const allFetchConfigOptions = {
       algorithm: ["Linear Regression"],
-      // stock: ["TSLA"],
       stock: this.state.availableStocks,
       timeframe: ["Live", "Current Day"]
 
@@ -35,19 +32,19 @@ class ChartFilterButtons extends React.Component{
     return(
       <div className="chart-filter-buttons-container">
         <div className="chart-filter-buttons">
-          <ChartFilterButton
+          <MuiChartFilterButton
             label="Algorithm"
             curOption={algorithm}
             options={allFetchConfigOptions.algorithm}
             changeFunc={changeAlgorithm}
             stopDatafeed={stopDatafeed}/>
-          <ChartFilterButton
+          <MuiChartFilterButton
             label="Stock"
             curOption={stock}
             options={allFetchConfigOptions.stock}
             changeFunc={changeStock}
             stopDatafeed={stopDatafeed}/>
-          <ChartFilterButton
+          <MuiChartFilterButton
             label="Timeframe"
             curOption={timeframe}
             options={allFetchConfigOptions.timeframe}
