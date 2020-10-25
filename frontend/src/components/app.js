@@ -3,7 +3,6 @@ import React from 'react';
 import Header from './header/header';
 import Body from './body/body';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 
 const theme = createMuiTheme({
   palette: {
