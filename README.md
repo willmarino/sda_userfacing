@@ -44,6 +44,7 @@ In addition to the servers from which the analylsis system is constructed, I als
 * Automate the running of the JavaScript files
 * On start of the AWS servers, use secure shell to remotely log into each server in a different terminal window/tab, and automatically run the init commands for that server (going to the correct directory on the linux machine and running, for example, node example.js arg1 arg2 arg3)
 
+[**Data Plotter**](https://github.com/willmarino/sda_plotter) - Here I am using some python code to pull down data from my MongoDB database, and examine correlations between certain market factors at certain times. I am essentially using this code to look for patterns I can take advantage of with my learning model.
 
 
 
