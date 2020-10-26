@@ -33,18 +33,42 @@ In addition to the servers from which the analylsis system is constructed, I als
 
 [**Start Scripts**](https://github.com/willmarino/sda_start_scripts) - This code is currently under construction, but the end goal of this section of the project is to automate the process by which I start up the system each morning. 
 <br>
-### The JavaScript files seek to:
 
+**The JavaScript files seek to:**
 * Boot up the three AWS EC2 instances which I do not run 24/7 via the EC2 API (free server hours only go so far)
 * Once the EC2 instances are fully initialized, manually edit my MongoDB Access List via the Atlas API to allow the servers running on AWS to access my database (this can also be done with VPC peering, but I am limited in terms of the AWS services I am currently able to utilize)
 * Shut down the non-user-facing EC2 instances as the market closes and the TD Ameritrade websocket slows down/stops
 
 
-### The Shell files seek to:
+**The Shell files seek to:**
 * Automate the running of the JavaScript files
 * On start of the AWS servers, use secure shell to remotely log into each server in a different terminal window/tab, and automatically run the init commands for that server (going to the correct directory on the linux machine and running, for example, node example.js arg1 arg2 arg3)
 
 [**Data Plotter**](https://github.com/willmarino/sda_plotter) - Here I am using some python code to pull down data from my MongoDB database, and examine correlations between certain market factors at certain times. I am essentially using this code to look for patterns I can take advantage of with my learning model.
+
+
+
+## User Interface (Node Server C) - In Depth
+*This component is currently undergoing a design overhaul, I am migrating from raw scss to the Material-UI Library*
+<br>
+
+The user interface component of this system is fairly straightforward. It is a Node/React combination which is only connected to the system as a whole via its tether to the MongoDB database. When a user views it in a browser, the code fetches the prediction objects I have stored in my database. These prediction objects contain two main values, those being the predicted value for a stock's price at time T, and the actual value for a stocks price at time T. I gather large amounts of these prediction objects in time order, and display them on a graph using the ReCharts library. The user can customize the time frame they want to view, or the stock they want to look at the analysis of, and my code displays the correct predictions on the graph.
+<br>
+
+The main function of the UI is to provide a real-time feed of my predictions juxtaposed with the target values (the actual stock price).
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
