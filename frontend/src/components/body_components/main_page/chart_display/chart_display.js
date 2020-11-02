@@ -1,4 +1,5 @@
 import React from 'react';
+import { fetchPredictions } from '../../../../util/predictions';
 import LinRegChartContainer from '../charts/lin_reg_chart/lin_reg_chart_container';
 
 class ChartDisplay extends React.Component{
@@ -12,53 +13,44 @@ class ChartDisplay extends React.Component{
     this.dataFetchingInterval = null;
     this.bindChartDimensions = this.bindChartDimensions.bind(this);
     this.executeLiveDataFeed = this.executeLiveDataFeed.bind(this);
-    this.isActive = this.isActive.bind(this);
-  }
-  isActive(){
-    // const curDate = new Date();
-    // const day = curDate.getDay();
-    // const hours = curDate.getHours();
-    // if(day >= 1 && day <= 5){
-    //   if(hours >= 9 && hours <= 16){
-    //     return true;
-    //   }
-    // }
-    return false;
   }
   componentDidMount(){
     const { fetchPredictions, datafeedConfig, fetchConfig } = this.props;
-    const { isLive } = datafeedConfig;
 
-    this.executeLiveDataFeed();
-    this.bindChartDimensions()
+    fetchPredictions(fetchConfig)
+      .then(() => {
+        if(fetchConfig.timeframe === 'Live'){
+          this.executeLiveDataFeed();
+        }
+        this.bindChartDimensions()
+      })
   }
   componentWillUnmount(){
     const { stopDatafeed } = this.props;
     stopDatafeed();
   }
   componentDidUpdate(prevProps){
-    const { fetchConfig, fetchPredictions } = this.props;
-    if(prevProps.fetchConfig !== fetchConfig && fetchConfig.timeframe === 'Live'){
-      // refetch and start datafeed
-      this.executeLiveDataFeed();
-    }else if(prevProps.fetchConfig !== this.props.fetchConfig){
-      // refetch
-      fetchPredictions(fetchConfig);
+    const { fetchPredictions, fetchConfig, stopDatafeed } = this.props;
+    if(prevProps.fetchConfig !== this.props.fetchConfig){
+      if(prevProps.fetchConfig.timeframe === 'Live'){
+        stopDatafeed();
+      }
+      fetchPredictions(fetchConfig)
+        .then(() => {
+          if(this.props.fetchConfig.timeframe === 'Live'){
+            this.executeLiveDataFeed();
+          }
+        })
     }
     
   }
   executeLiveDataFeed(){
-    const { fetchPredictions, fetchMostRecentPrediction, startDatafeed, fetchConfig } = this.props;
-    fetchPredictions(fetchConfig)
-      .then(() => {
-        if(this.isActive()){
-          const interval = setInterval(() => {
-            fetchMostRecentPrediction(fetchConfig.stock)
-          }, 1000);
-          startDatafeed(interval);
-          this.setState({ buttonActive: true });
-        }
-      })
+    const { fetchMostRecentPrediction, startDatafeed, fetchConfig } = this.props;
+    const interval = setInterval(() => {
+      fetchMostRecentPrediction(fetchConfig.stock)
+    }, 1000);
+    startDatafeed(interval);
+    this.setState({ buttonActive: true });
   }
   bindChartDimensions(){
     const chartContainer = document.getElementById('chart-display-container');
@@ -92,3 +84,12 @@ class ChartDisplay extends React.Component{
 }
 
 export default ChartDisplay;
+
+
+
+
+    // if(prevProps.fetchConfig !== this.props.fetchConfig && this.props.fetchConfig.timeframe === 'Live'){
+    //   this.executeLiveDataFeed();
+    // }else if(prevProps.fetchConfig !== this.props.fetchConfig){
+    //   fetchPredictions(fetchConfig);
+    // }

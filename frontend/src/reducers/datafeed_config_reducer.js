@@ -4,8 +4,7 @@ import {
 } from '../actions/datafeed_config';
 
 const defaultState = {
-  live: false,
-
+  live: false
 }
 
 const DatafeedConfigReducer = (state=defaultState, action) => {

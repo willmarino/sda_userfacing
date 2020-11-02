@@ -6,9 +6,6 @@ class LinRegChart extends React.Component{
     super(props);
   }
 
-  componentDidMount(){
-  }
-
   render(){
     const { predictions, chartHeight, chartWidth } = this.props;
     if(!predictions || Object.keys(predictions).length === 0){

@@ -26,7 +26,6 @@ const MuiChartFilterButton = (props) => {
   const classes = useStyles();
 
   const handleChange = (e) => {
-    debugger;
     setButtonVal(e.target.value);
     props.changeFunc(e.target.value);
   }
