@@ -14,7 +14,9 @@ const filterDBData = (data, filters) => {
     while (i < data.length){
       const curDatum = data[i];
       if(j === divisor){
-        res.push(curDatum);
+        if(curDatum.prediction < (curDatum.target * 2) && curDatum.prediction > (curDatum.target * (-2))){
+          res.push(curDatum);
+        }
         j = 1;
       }else{
         j += 1;

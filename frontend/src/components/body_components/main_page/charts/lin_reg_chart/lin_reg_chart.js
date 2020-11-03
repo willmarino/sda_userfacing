@@ -1,4 +1,5 @@
 import React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 
 class LinRegChart extends React.Component{
@@ -9,7 +10,11 @@ class LinRegChart extends React.Component{
   render(){
     const { predictions, chartHeight, chartWidth } = this.props;
     if(!predictions || Object.keys(predictions).length === 0){
-      return null;
+      return (
+        <div className='progress-container'>
+          <CircularProgress />
+        </div>
+      );
     }
     let max = Math.max(predictions[0].prediction, predictions[0].target);
     let min = Math.min(predictions[0].prediction, predictions[0].target);

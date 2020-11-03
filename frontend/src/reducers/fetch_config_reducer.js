@@ -10,7 +10,7 @@ const isActive = () => {
   const day = curDate.getDay();
   const hours = curDate.getHours();
   if(day >= 1 && day <= 5){
-    if(hours >= 9 && hours <= 16){
+    if(hours >= 9 && hours <= 15){
       return true;
     }
   }
@@ -19,7 +19,7 @@ const isActive = () => {
 
 const defaultState = {
   algorithm: 'Linear Regression',
-  stock: 'TSLA',
+  stock: 'GOOG',
   timeframe: (isActive()) ? 'Live' : 'Current Day'
 }
 
