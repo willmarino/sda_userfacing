@@ -9,19 +9,29 @@ import { withRouter } from 'react-router-dom';
 const Header = (props) => {
   const useStyles = makeStyles((theme) => ({
     headline: {
+      width: '250px',
       fontSize: '22px',
       fontWeight: 500
+    },
+    button: {
+      marginRight: '20px'
     }
   }))
   const classes = useStyles();
+
+  const navPages = (path) => {
+    return () => {
+      props.history.push(path);
+    }
+  }
   return(
     <div className='header-container'>
       <div className='header'>
-        <p></p>
+        <p className='header-section'></p>
         <p className={classes.headline}>Stock Data Analysis</p>
-        <div>
-          <Button color='secondary' variant='contained'>Home</Button>
-          <Button color='secondary' variant='contained'>About</Button>
+        <div className='header-section'>
+          <Button color='secondary' variant='contained' className={classes.button} onClick={navPages('/')}>Home</Button>
+          <Button color='secondary' variant='contained' className={classes.button} onClick={navPages('/about')}>About</Button>
         </div>
       </div>
       {/* <p className="header-header">Stock Price Analysis</p>

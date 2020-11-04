@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchPredictions } from '../../../../util/predictions';
+import ChartFilterButtonsContainer from '../chart_filter_buttons_container';
 import LinRegChartContainer from '../charts/lin_reg_chart/lin_reg_chart_container';
 
 class ChartDisplay extends React.Component{
@@ -72,7 +73,8 @@ class ChartDisplay extends React.Component{
     return(
       <div className='chart-display-container' id="chart-display-container">
         <div className='chart-display-buttons'>
-          <p id={ids} className='chart-display-button' onClick={onClickFunc}>{message}</p>
+          {/* <p id={ids} className='chart-display-button' onClick={onClickFunc}>{message}</p> */}
+          <ChartFilterButtonsContainer/>
         </div>
         <LinRegChartContainer
           chartHeight={chartHeight}

@@ -5,7 +5,7 @@ import ChartDisplayContainer from './chart_display/chart_display_container';
 
 const MainPage = () => (
   <div className="main-page">
-    <ChartFilterButtonsContainer/>
+    {/* <ChartFilterButtonsContainer/> */}
     <ChartDisplayContainer/>
   </div>
 )
