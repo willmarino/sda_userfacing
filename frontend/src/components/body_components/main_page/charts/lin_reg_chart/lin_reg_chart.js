@@ -16,6 +16,7 @@ class LinRegChart extends React.Component{
         </div>
       );
     }
+    debugger;
     let max = Math.max(predictions[0].prediction, predictions[0].target);
     let min = Math.min(predictions[0].prediction, predictions[0].target);
     const data = [];
