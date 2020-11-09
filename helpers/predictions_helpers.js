@@ -41,11 +41,29 @@ const filterDBDataByTime = (data, time) => {
   }
 }
 const filterDBDataByStock = (data, stock) => {
-
   return data.filter(d => d.stock === stock);
 }
 const filterDBDataByAlgo = (data, algo) => {
   return data.filter(d => d.algorithm === algo);
 }
+
+// asdasda
+
+const computeTimeLimits = () => {
+  
+}
+
+
+
+
+
+
+
+
+// asdasda
+
+
+
+
 
 module.exports = filterDBData;

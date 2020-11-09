@@ -17,10 +17,7 @@ router.get("/", (req, res) => {
 
 router.get("/most_recent", (req, res) => {
   Prediction.find( {stock: req.query.stock} ).sort({ _id: -1 }).limit(1)
-  // Prediction.find()
     .then((latestPrediction) => {
-      // const latestPrediction = predictions[LC.cur];
-      // LC.cur += 1;
       res.send(latestPrediction);
     })
 })
