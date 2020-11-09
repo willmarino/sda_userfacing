@@ -5,22 +5,25 @@ import {
 } from '../actions/fetch_config';
 
 
-const isActive = () => {
+const status = () => {
   const curDate = new Date();
   const day = curDate.getDay();
   const hours = curDate.getHours();
   if(day >= 1 && day <= 5){
     if(hours >= 9 && hours <= 15){
-      return true;
+      return 'Live';
+    }else{
+      return 'Current Day';
     }
+  }else{
+    return 'Current Week';
   }
-  return false;
 }
 
 const defaultState = {
   algorithm: 'Linear Regression',
   stock: 'GOOG',
-  timeframe: (isActive()) ? 'Live' : 'Current Day'
+  timeframe: status()
 }
 
 const FetchConfigReducer = (state=defaultState, action) => {

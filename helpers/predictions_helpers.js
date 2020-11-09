@@ -1,69 +1,47 @@
 
 
-const filterDBData = (data, filters) => {
+const filterDBData = (data) => {
   let res = [];
-  data = filterDBDataByTime(data, filters.timeframe);
-  data = filterDBDataByAlgo(data, filters.algorithm);
-  data = filterDBDataByStock(data, filters.stock);
-  if(filters.timeframe === 'Live'){
-    return data;
-  }else{
-    let divisor = Math.floor(data.length / 100);
-    let i = 0;
-    let j = 1;
-    while (i < data.length){
-      const curDatum = data[i];
-      if(j === divisor){
-        if(curDatum.prediction < (curDatum.target * 2) && curDatum.prediction > (curDatum.target * (-2))){
-          res.push(curDatum);
-        }
-        j = 1;
-      }else{
-        j += 1;
+  let divisor = Math.floor(data.length / 100);
+  let i = 0;
+  let j = 1;
+  while (i < data.length){
+    const curDatum = data[i];
+    if(j === divisor){
+      if(curDatum.prediction < (curDatum.target * 1.1) && curDatum.prediction > (curDatum.target * (0.5))){
+        res.push(curDatum);
       }
-      i += 1
+      j = 1;
+    }else{
+      j += 1;
     }
-    return res;
+    i += 1
   }
+  return res;
 }
-const filterDBDataByTime = (data, time) => {
-  let res = [];
-  if(time === "Live"){
-    return data.slice(-50);
-  }else if(time === "Current Day"){
-    let startOfDay = new Date().setHours(0, 0, 0, 0);
-    data.forEach((d) => {
-      if(d.timestamp > startOfDay){
-        res.push(d);
-      }
-    })
-    return res;
+
+const computeTimeLimits = (gap) => {
+  let date = new Date();
+  let curDay = date.getDay();
+  let curHours = date.getHours();
+  let curMinutes = date.getMinutes();
+  let curSeconds = date.getSeconds();
+
+  let millisecondsBack = ( curHours * 60 * 60 * 1000) + (curMinutes * 60 * 1000) + (curSeconds * 1000);
+  if(gap === 'Current Week'){
+    let daysElapsed = 0;
+    while (curDay !== 1){
+      curDay = (curDay === 0) ? 6 : curDay - 1;
+      daysElapsed += 1;
+    }
+    millisecondsBack += daysElapsed * 24 * 60 * 60 * 1000;
   }
-}
-const filterDBDataByStock = (data, stock) => {
-  return data.filter(d => d.stock === stock);
-}
-const filterDBDataByAlgo = (data, algo) => {
-  return data.filter(d => d.algorithm === algo);
+
+  return date.getTime() - millisecondsBack;
+
 }
 
-// asdasda
-
-const computeTimeLimits = () => {
-  
-}
-
-
-
-
-
-
-
-
-// asdasda
-
-
-
-
-
-module.exports = filterDBData;
+module.exports = {
+  filterDBData,
+  computeTimeLimits
+};

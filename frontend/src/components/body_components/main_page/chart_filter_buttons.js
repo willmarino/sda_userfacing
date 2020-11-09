@@ -24,7 +24,7 @@ class ChartFilterButtons extends React.Component{
     const allFetchConfigOptions = {
       algorithm: ["Linear Regression"],
       stock: this.state.availableStocks,
-      timeframe: ["Live", "Current Day"]
+      timeframe: ["Live", "Current Day", "Current Week"]
 
     }
     const { changeAlgorithm, changeStock, changeTimeframe, fetchConfig, stopDatafeed } = this.props;

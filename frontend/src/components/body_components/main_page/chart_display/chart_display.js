@@ -64,11 +64,8 @@ class ChartDisplay extends React.Component{
     this.setState({ chartHeight, chartWidth });
   }
   render(){
-    const { datafeedConfig, stopDatafeed, startDatafeed, changeTimeframe } = this.props;
-    const { chartWidth, chartHeight, buttonActive } = this.state;
-    const ids = (datafeedConfig.live) ? 'chart-display-button-active' : null;
-    const message = (datafeedConfig.live) ? 'Stop Live Datafeed' : 'Start Live Datafeed';
-    const onClickFunc = (datafeedConfig.live) ? () => { stopDatafeed() } : () => { changeTimeframe('Live') };
+    const { chartWidth, chartHeight } = this.state;
+
     return(
       <div className='chart-display-container' id="chart-display-container">
         <div className='chart-display-buttons'>
@@ -84,12 +81,3 @@ class ChartDisplay extends React.Component{
 }
 
 export default ChartDisplay;
-
-
-
-
-    // if(prevProps.fetchConfig !== this.props.fetchConfig && this.props.fetchConfig.timeframe === 'Live'){
-    //   this.executeLiveDataFeed();
-    // }else if(prevProps.fetchConfig !== this.props.fetchConfig){
-    //   fetchPredictions(fetchConfig);
-    // }
