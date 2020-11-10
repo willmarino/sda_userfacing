@@ -13,7 +13,6 @@ router.get("/", (req, res) => {
     console.log('here');
     Prediction.find( { stock: req.query.stock, algorithm: req.query.algorithm } ).sort({ _id: -1 }).limit(100)
       .then((predictionResponse) => {
-        // res.send(filterDBData(predictionResponse));
         res.send(predictionResponse);
       })
   }else{

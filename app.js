@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const predictionRouter = require('./routes/predictions');
 const availableStocksRouter = require('./routes/available_stocks');
+const pricesRouter = require('./routes/prices');
 const db = require('./config/keys').MongoURI;
 const bodyParser = require('body-parser')
 const path = require('path');
