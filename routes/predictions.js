@@ -10,9 +10,11 @@ const computeTimeLimits = require('../helpers/predictions_helpers').computeTimeL
 router.get("/", (req, res) => {
   const filters = req.query;
   if(filters.timeframe === 'Live'){
+    console.log('here');
     Prediction.find( { stock: req.query.stock, algorithm: req.query.algorithm } ).sort({ _id: -1 }).limit(100)
       .then((predictionResponse) => {
-        res.send(filterDBData(predictionResponse));
+        // res.send(filterDBData(predictionResponse));
+        res.send(predictionResponse);
       })
   }else{
     const bottomTime = computeTimeLimits(filters.timeframe)
