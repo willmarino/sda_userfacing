@@ -1,5 +1,4 @@
 .chart-filter-buttons-container{
-  height: 15%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,12 +6,6 @@
 }
 
 .chart-filter-buttons{
-  min-width: 300px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  margin-bottom: 15px;
 
   p{
     user-select: none;

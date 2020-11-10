@@ -16,7 +16,6 @@ class LinRegChart extends React.Component{
         </div>
       );
     }
-    debugger;
     let max = Math.max(predictions[0].prediction, predictions[0].target);
     let min = Math.min(predictions[0].prediction, predictions[0].target);
     const data = [];
@@ -34,7 +33,6 @@ class LinRegChart extends React.Component{
       ticks.push(Math.round(min + (step * i)));
     }
     ticks.push(max);
-    console.log(ticks);
     return(
       <div className="chart-display">
         <LineChart width={ chartWidth } height={chartHeight} data={data}>
@@ -43,7 +41,7 @@ class LinRegChart extends React.Component{
           <Line type="monotone" dataKey="target" stroke="#b31717" strokeWidth={3} />
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="name"/>
-          <YAxis type="number" domain={[min, max]} ticks={ticks}/>
+          <YAxis type="number" domain={[min, max]} ticks={ticks} tick={{fontSize: 14}}/>
         </LineChart>
       </div>
     )

@@ -54,12 +54,12 @@ class ChartDisplay extends React.Component{
   }
   bindChartDimensions(){
     const chartContainer = document.getElementById('chart-display-container');
-    const chartHeight = chartContainer.clientHeight * 0.9;
-    const chartWidth = chartContainer.clientWidth * 0.7;
+    const chartHeight = chartContainer.clientHeight * 0.8;
+    const chartWidth = chartContainer.clientWidth * 0.9;
     window.addEventListener('resize', () => {
       this.setState({
-        chartHeight: chartContainer.clientHeight * 0.9,
-        chartWidth: chartContainer.clientWidth * 0.7})
+        chartHeight: chartContainer.clientHeight * 0.8,
+        chartWidth: chartContainer.clientWidth * 0.9})
     })
     this.setState({ chartHeight, chartWidth });
   }

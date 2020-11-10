@@ -8,9 +8,6 @@ const filterDBData = (data) => {
   const upperBound = ss.mean(targetData) + (ss.standardDeviation(targetData) * 5)
   const lowerBound = ss.mean(targetData) - (ss.standardDeviation(targetData) * 5)
 
-  console.log(upperBound);
-  console.log(lowerBound);
-
   const divisor = Math.floor(data.length / 200);
   let i = 0;
   let j = 1;
