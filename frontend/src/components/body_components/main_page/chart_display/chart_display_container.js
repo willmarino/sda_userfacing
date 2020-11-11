@@ -7,7 +7,8 @@ import ChartDisplay from './chart_display';
 
 const msp = (state) => ({
   datafeedConfig: state.config.datafeedConfig,
-  fetchConfig: state.config.fetchConfig
+  fetchConfig: state.config.fetchConfig,
+  predictions: state.predictions
 })
 
 const mdp = (dispatch) => ({

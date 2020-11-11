@@ -26,4 +26,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/predictions", predictionRouter);
 app.use("/available_stocks", availableStocksRouter);
+app.use("/prices", pricesRouter);
 app.listen(port, () => console.log('listening'));

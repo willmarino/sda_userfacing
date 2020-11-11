@@ -1,6 +1,8 @@
 import React from 'react';
 import ChartFilterButtonsContainer from '../chart_filter_buttons_container';
-import LinRegChartContainer from '../charts/lin_reg_chart/lin_reg_chart_container';
+import CircularProgress from '@material-ui/core/CircularProgress';
+// import LinRegChartContainer from '../charts/lin_reg_chart/lin_reg_chart_container';
+import LinRegChart from '../charts/lin_reg_chart/lin_reg_chart';
 
 class ChartDisplay extends React.Component{
   constructor(props){
@@ -8,11 +10,12 @@ class ChartDisplay extends React.Component{
     this.state = {
       chartHeight: null,
       chartWidth: null,
-      buttonActive: false
+      loading: true
     }
     this.dataFetchingInterval = null;
     this.bindChartDimensions = this.bindChartDimensions.bind(this);
     this.executeLiveDataFeed = this.executeLiveDataFeed.bind(this);
+    this.afterFirstRender = this.afterFirstRender.bind(this);
   }
   componentDidMount(){
     const { fetchPredictions, datafeedConfig, fetchConfig } = this.props;
@@ -22,15 +25,20 @@ class ChartDisplay extends React.Component{
         if(fetchConfig.timeframe === 'Live'){
           this.executeLiveDataFeed();
         }
-        this.bindChartDimensions()
+        // this.bindChartDimensions()
       })
   }
   componentWillUnmount(){
     const { stopDatafeed } = this.props;
     stopDatafeed();
   }
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps, prevState){
     const { fetchPredictions, fetchConfig, stopDatafeed } = this.props;
+
+    if(prevState.loading){
+      this.afterFirstRender()
+    }
+
     if(prevProps.fetchConfig !== this.props.fetchConfig){
       if(prevProps.fetchConfig.timeframe === 'Live'){
         stopDatafeed();
@@ -63,18 +71,37 @@ class ChartDisplay extends React.Component{
     })
     this.setState({ chartHeight, chartWidth });
   }
+  afterFirstRender(){
+    this.setState({ loading: false });
+    this.bindChartDimensions();
+  }
+
   render(){
-    const { chartWidth, chartHeight } = this.state;
+    const { predictions } = this.props
+    const { chartWidth, chartHeight, loading } = this.state;
+
+    let chart;
+    if(!predictions || Object.keys(predictions).length === 0 || loading){
+      chart = (
+        <div className='progress-container'>
+          <CircularProgress />
+        </div>
+      );
+    }else{
+      chart = <LinRegChart chartHeight={chartHeight} chartWidth={chartWidth} predictions={predictions}/>
+    }
 
     return(
       <div className='chart-display-container' id="chart-display-container">
         <div className='chart-display-buttons'>
           <ChartFilterButtonsContainer/>
         </div>
-        <LinRegChartContainer
+        {chart}
+        {/* <LinRegChart
           chartHeight={chartHeight}
           chartWidth={chartWidth}
-        />
+          predictions={predictions} */}
+        {/* /> */}
       </div>
     )
   }

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Prediction = require('../models/prediction');
+const RecentPrediction = require('../models/recent_prediction');
 const LC = require('../local_cache');
 const filterDBData = require('../helpers/predictions_helpers').filterDBData;
 const computeTimeLimits = require('../helpers/predictions_helpers').computeTimeLimits;
@@ -10,10 +11,11 @@ const computeTimeLimits = require('../helpers/predictions_helpers').computeTimeL
 router.get("/", (req, res) => {
   const filters = req.query;
   if(filters.timeframe === 'Live'){
-    console.log('here');
-    Prediction.find( { stock: req.query.stock, algorithm: req.query.algorithm } ).sort({ _id: -1 }).limit(100)
-      .then((predictionResponse) => {
-        res.send(predictionResponse);
+
+    // algo?
+    RecentPrediction.find( { stock: req.query.stock } )
+      .then((recentPredictionsResponse) => {
+        res.send(recentPredictionsResponse);
       })
   }else{
     const bottomTime = computeTimeLimits(filters.timeframe)
