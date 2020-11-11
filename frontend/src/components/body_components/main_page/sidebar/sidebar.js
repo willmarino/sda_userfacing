@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import TickerDisplay from './sidebar_components/ticker_display';
 
 class Sidebar extends React.Component{
   constructor(props){
@@ -23,23 +24,25 @@ class Sidebar extends React.Component{
 
   render(){
     const { latestPrices } = this.props;
-    let prices;
 
     if(Object.values(latestPrices).length === 0){
-      prices = <CircularProgress />;
-    }else{
-      prices = [];
-      latestPrices.forEach((lp) => {
-        prices.push(
-          <p>{lp.stock} is at {lp.price}</p>
-        )
-      })
+      return <CircularProgress />;
     }
+    // else{
+    //   prices = [];
+    //   latestPrices.forEach((lp) => {
+    //     prices.push(
+    //       <p>{lp.stock} is at {lp.price}</p>
+    //     )
+    //   })
+    // }
 
 
     return(
       <div className='sidebar'>
-        {prices}
+        <TickerDisplay prices={latestPrices}/>
+        <div className='sidebar-placeholder'>
+        </div>
       </div>
     )
   }

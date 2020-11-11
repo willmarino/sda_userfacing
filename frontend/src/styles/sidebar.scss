@@ -2,9 +2,23 @@
   width: 25%;
   height: 85%;
 
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0 0 6px 1px #BEBEBE;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 
-  background: white;
+.ticker-display{
+  width: 100%;
+  min-height: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-placeholder{
+  width: 100%;
+  min-height: 50%;
 }
